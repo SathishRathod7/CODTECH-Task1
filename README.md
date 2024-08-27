@@ -27,6 +27,5 @@ Technologies Used:
  5. seaborn: for statistical data visualization.  
 
 
- ![output-21](https://github.com/user-attachments/assets/68c8ba77-44c6-49a7-aab3-aef3b45182cc)
 
 

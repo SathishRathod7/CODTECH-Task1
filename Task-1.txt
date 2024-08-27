@@ -1,0 +1,47 @@
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Load the dataset
+file_path = '/content/Dataset .csv'
+data = pd.read_csv(file_path)
+
+# Display the first few rows of the dataset
+print("First few rows of the dataset:")
+data.head()
+
+# Display basic information about the dataset
+print("\nDataset Info:")
+print(data.info())
+
+# Check for missing values
+print("\nMissing values in each column:")
+print(data.isnull().sum())
+
+# Summary statistics of the dataset
+print("\nSummary statistics:")
+data.describe()
+
+# Plotting histograms for numerical columns
+data.hist(bins=20, figsize=(20, 15))
+plt.suptitle('Histograms of Numerical Columns', fontsize=16)
+plt.show()
+
+# Correlation heatmap considering only numerical columns
+plt.figure(figsize=(12, 8))
+correlation_matrix = data.select_dtypes(include=[np.number]).corr()
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm')
+plt.title('Correlation Heatmap', fontsize=16)
+plt.show()
+
+# Scatter plots for selected pairs of variables
+sns.pairplot(data)
+plt.suptitle('Pairplot of All Numerical Columns', fontsize=16)
+plt.show()
+
+# Detecting outliers using boxplots for numerical columns
+plt.figure(figsize=(15, 10))
+data.plot(kind='box', subplots=True, layout=(5, 5), sharex=False, sharey=False, figsize=(20, 15))
+plt.suptitle('Boxplots for Outlier Detection', fontsize=16)
+plt.show()
